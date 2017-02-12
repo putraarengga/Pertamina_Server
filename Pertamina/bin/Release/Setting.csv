@@ -1,0 +1,9 @@
+DSN,idsf_online
+server,103.247.81.246
+printer,Xprinter XP-350B II
+client,PLTD Sentani
+DSN_Offline,idsf
+Server_Offline,localhost
+User_Offline,root
+Password_Offline,r7pqv6s6Xc9QbZKK
+DSN_Dir,idsf.sql
