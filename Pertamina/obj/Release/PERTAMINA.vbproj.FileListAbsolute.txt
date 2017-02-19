@@ -19,3 +19,24 @@ C:\Users\PUTRA\Documents\Visual Studio 2012\Projects\Pertamina_Server\Pertamina\
 C:\Users\PUTRA\Documents\Visual Studio 2012\Projects\Pertamina_Server\Pertamina\obj\Release\PERTAMINA.vbproj.ResolveComReference.cache
 C:\Users\PUTRA\Documents\Visual Studio 2012\Projects\Pertamina_Server\Pertamina\obj\Release\PERTAMINA.formDataExport.resources
 C:\Users\PUTRA\Documents\Visual Studio 2012\Projects\Pertamina_Server\Pertamina\obj\Release\PERTAMINA.FormDataBaseOffline.resources
+E:\GitHub\Pertamina\Pertamina_Server\Pertamina\bin\Release\IDSF_Server.exe.config
+E:\GitHub\Pertamina\Pertamina_Server\Pertamina\obj\Release\PERTAMINA.vbproj.ResolveComReference.cache
+E:\GitHub\Pertamina\Pertamina_Server\Pertamina\obj\Release\IDSF_Server.exe
+E:\GitHub\Pertamina\Pertamina_Server\Pertamina\obj\Release\IDSF_Server.xml
+E:\GitHub\Pertamina\Pertamina_Server\Pertamina\obj\Release\IDSF_Server.pdb
+E:\GitHub\Pertamina\Pertamina_Server\Pertamina\bin\Release\IDSF_Server.exe
+E:\GitHub\Pertamina\Pertamina_Server\Pertamina\bin\Release\IDSF_Server.pdb
+E:\GitHub\Pertamina\Pertamina_Server\Pertamina\bin\Release\IDSF_Server.xml
+E:\GitHub\Pertamina\Pertamina_Server\Pertamina\obj\Release\PERTAMINA.vbprojResolveAssemblyReference.cache
+E:\GitHub\Pertamina\Pertamina_Server\Pertamina\obj\Release\PERTAMINA.FormDataBaseOffline.resources
+E:\GitHub\Pertamina\Pertamina_Server\Pertamina\obj\Release\PERTAMINA.formDataExport.resources
+E:\GitHub\Pertamina\Pertamina_Server\Pertamina\obj\Release\PERTAMINA.formDataJenisUser.resources
+E:\GitHub\Pertamina\Pertamina_Server\Pertamina\obj\Release\PERTAMINA.formDataTujuan.resources
+E:\GitHub\Pertamina\Pertamina_Server\Pertamina\obj\Release\PERTAMINA.formDataKendaraan.resources
+E:\GitHub\Pertamina\Pertamina_Server\Pertamina\obj\Release\PERTAMINA.Frm_Main.resources
+E:\GitHub\Pertamina\Pertamina_Server\Pertamina\obj\Release\PERTAMINA.Form2.resources
+E:\GitHub\Pertamina\Pertamina_Server\Pertamina\obj\Release\PERTAMINA.formDataUser.resources
+E:\GitHub\Pertamina\Pertamina_Server\Pertamina\obj\Release\PERTAMINA.FormLogin.resources
+E:\GitHub\Pertamina\Pertamina_Server\Pertamina\obj\Release\PERTAMINA.FormMenu.resources
+E:\GitHub\Pertamina\Pertamina_Server\Pertamina\obj\Release\PERTAMINA.Resources.resources
+E:\GitHub\Pertamina\Pertamina_Server\Pertamina\obj\Release\PERTAMINA.vbproj.GenerateResource.Cache

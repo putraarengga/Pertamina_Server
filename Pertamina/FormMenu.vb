@@ -20,12 +20,16 @@ Public Class FormMenu
     Shared Property arrName As New List(Of String)
     Shared Property arrValue As New List(Of String)
 
+
     Dim excel3() As Integer = {1, 7, 11, 0, 12}
     Dim excel2sheet1() As Integer = {7, 12, 4}
     Dim excel2sheet2() As Integer = {7, 0, 12, 4}
     Dim excel2sheet3() As Integer = {7, 12, 12, 4}
 
     Dim selectDataBase As String
+    Dim simpan As String
+    Dim format As String = "yyyy-MM-dd"
+
 
     Private Sub MainMenu_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         BarcodeSettings.ApplyKey("KTWS5-S17CF-B3LKE-FXT34-DVRUH")
@@ -192,7 +196,36 @@ Public Class FormMenu
         GetLastUpdateIDOffline()
         'ada data baru
         If lastIDDistribusiOffline > lastIDDistribusi Then
+            ' save data to list
+
+            For i = lastIDDistribusi To lastIDDistribusiOffline
+                lastIDDistribusi += 1
+                selectDataBase = "SELECT * FROM tdistribusi WHERE IDDistribusi ='" & lastIDDistribusi & "' "
+                FormMenu.dbOnline = False
+                bukaDB()
+                DA = New Odbc.OdbcDataAdapter(selectDataBase, konek)
+                DS = New DataSet
+                DT = New DataTable
+                DS.Clear()
+                DA.Fill(DT)
+                If DT.Rows.Count > 0 Then
+                    Dim tglMuat As DateTime = Convert.ToDateTime(DT.Rows(0).Item("tglMuat").ToString)
+                    simpan = "INSERT INTO tdistribusi(IDDistribusi,IDKendaraan,IDUser,IDTujuan, " +
+                            "NoDO,wktMuat,wktSampai,tglMuat,tglSampai, " +
+                            " dataBarcode,Keterangan, tempatLoading, IDUserClient) " +
+                         "VALUES ('" & DT.Rows(0).Item("IDDistribusi").ToString & "', '" & DT.Rows(0).Item("IDKendaraan").ToString & "', '" & DT.Rows(0).Item("IDUser").ToString & "', '" & DT.Rows(0).Item("IDTujuan").ToString & "', " +
+                            " '" & DT.Rows(0).Item("NoDO").ToString & "', '" & DT.Rows(0).Item("wktMuat").ToString & "', '" & DT.Rows(0).Item("wktSampai").ToString & "', '" & tglMuat.ToString(format) & "',  '" & DT.Rows(0).Item("tglSampai").ToString & "', " +
+                            " '" & DT.Rows(0).Item("dataBarcode").ToString & "', '" & DT.Rows(0).Item("Keterangan").ToString & "',  '" & DT.Rows(0).Item("tempatLoading").ToString & "',  '" & DT.Rows(0).Item("IDUserClient").ToString & "')"
+                    FormMenu.dbOnline = True
+                    jalankansql(simpan)
+                End If
+
+                lastIDDistribusi += 1
+            Next
+
+
             ' update data to server
+
 
         End If
         'ada update data
@@ -401,13 +434,13 @@ Public Class FormMenu
             End If
 
             Dim appPath As String = Application.StartupPath()
-            Dim file As String = appPath + "\" + FormMenu.arrValue(8) + ".zip"
+            Dim file As String = appPath + "\" + FormMenu.arrValue(8)
 
             Dim connect As MySqlConnection
 
             connect = New MySqlConnection
             If (FormMenu.dbOnline = True) Then
-                connect.ConnectionString = "server=" + FormMenu.arrValue(1) + ";userid=admin_idsf;password=123456;database=idsf"
+                connect.ConnectionString = "server=103.247.8.246;user=admin_idsf;password=123456;database=idsf;Convert Zero Datetime=True;"
             Else
                 connect.ConnectionString = "server=localhost;userid=root;password=r7pqv6s6Xc9QbZKK;database=idsf"
             End If
@@ -421,22 +454,40 @@ Public Class FormMenu
             mb.ExportInfo.AddCreateDatabase = True
             mb.ExportInfo.ExportTableStructure = True
             mb.ExportInfo.ExportRows = True
-            mb.ExportToFile(file)
+            Try
+                mb.ExportToFile(file)
+            Catch ex As Exception
+
+            End Try
+
             connect.Close()
 
             FormMenu.dbOnline = False
             If (FormMenu.dbOnline = True) Then
                 connect.ConnectionString = "server=" + FormMenu.arrValue(1) + ";userid=admin_idsf;password=123456;database=idsf"
             Else
-                connect.ConnectionString = "server=localhost;userid=root;password=r7pqv6s6Xc9QbZKK;database=idsf"
+                connect.ConnectionString = "server=localhost;userid=root;pwd=r7pqv6s6Xc9QbZKK;database=idsf;"
             End If
             cmd.Connection = connect
             connect.Open()
-            mb.ImportInfo.TargetDatabase = FormMenu.arrValue(5)
-            mb.ImportInfo.DatabaseDefaultCharSet = "utf8"
             mb.ImportFromFile(file)
+            connect.Close()
 
         End If
 
+    End Sub
+    Private Sub jalankansql(ByVal sQL As String)
+        Dim objcmd As New System.Data.Odbc.OdbcCommand
+        bukaDB()
+        Try
+            objcmd.Connection = konek
+            objcmd.CommandType = CommandType.Text
+            objcmd.CommandText = sQL
+            objcmd.ExecuteNonQuery()
+            objcmd.Dispose()
+            MsgBox("Data sudah disimpan", vbInformation)
+        Catch ex As Exception
+            MsgBox("Tidak bisa menyimpan data ke server" & ex.Message)
+        End Try
     End Sub
 End Class

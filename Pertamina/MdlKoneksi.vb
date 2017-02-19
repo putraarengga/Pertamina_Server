@@ -14,7 +14,7 @@ Module MdlKoneksi
     Sub bukaDB()
         Try
             If (FormMenu.dbOnline = True) Then
-                konek = New OdbcConnection("Dsn=" + FormMenu.arrValue(0) + ";server=" + FormMenu.arrValue(1) + ";userid=admin_idsf;password=123456;database=idsf;port=3306")
+                konek = New OdbcConnection("Dsn=" + FormMenu.arrValue(0) + ";server=" + FormMenu.arrValue(1) + ";user=admin_idsf;password=123456;database=idsf;port=3306")
             Else
                 konek = New OdbcConnection("Dsn=idsf_offline;server=localhost;userid=root;password=r7pqv6s6Xc9QbZKK;database=idsf;port=3306")
             End If
